@@ -19,9 +19,8 @@ export default {
     addTodo: function(){
       if(this.newTodoItem !== '') {
       //저장하는 로직
-      var obj = {completed: false, item: this.newTodoItem};
-      localStorage.setItem(this.newTodoItem, JSON.stringify(obj)); //key와 value를 동일하게 저장한다. 그리고 객체를 문자열로 변환한다.
-      this.clearInput(); //값을 비워주는 함수를 분할해서 만든다.
+        this.$emit('addTodoItem', this.newTodoItem);
+        this.clearInput(); //값을 비워주는 함수를 분할해서 만든다.
       }    
     },
     clearInput: function() {
