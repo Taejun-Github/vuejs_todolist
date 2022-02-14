@@ -18,12 +18,12 @@
     import TodoFooter from './components/TodoFooter.vue'
 
     export default {
-        data: function () {
+        data() {
             return {todoItems: []}
         },
         methods: {
-            addOneItem: function (todoItem) { // this.$emit('addTodoItem', this.newTodoItem);에서 전달한 this.newTodoItem이 todoItem으로 들어간다.
-                var obj = {
+            addOneItem(todoItem) { // this.$emit('addTodoItem', this.newTodoItem);에서 전달한 this.newTodoItem이 todoItem으로 들어간다.
+                const obj = {
                     completed: false,
                     item: todoItem
                 };
@@ -32,13 +32,13 @@
                     .todoItems
                     .push(obj);
             },
-            removeOneItem: function (todoItem, index) {
+            removeOneItem(todoItem, index) {
                 localStorage.removeItem(todoItem.item);
                 this
                     .todoItems
                     .splice(index, 1);
             },
-            toggleOneItem: function (todoItem, index) {
+            toggleOneItem(todoItem, index) {
                 //localStorage에서 데이터를 갱신하는 과정
                 this
                     .todoItems[index]
@@ -50,13 +50,13 @@
                 localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
                 //아이템을 제거하고 새로 추가한다. 업데이트하는 api가 없기 때문에 업데이트를 하기 위해서 이렇게 한다.
             },
-            clearAllItems: function () {
+            clearAllItems() {
                 localStorage.clear();
                 this.todoItems = [];
             }
         },
 
-        created: function () {
+        created() {
             // console.log('created');
             if (localStorage.length > 0) {
                 for (let i = 0; i < localStorage.length; i++) {
@@ -69,10 +69,10 @@
             }
         },
         components: {
-            'TodoHeader': TodoHeader,
-            'TodoList': TodoList,
-            'TodoInput': TodoInput,
-            'TodoFooter': TodoFooter
+            TodoHeader,
+            TodoList,
+            TodoInput,
+            TodoFooter
         }
     }
 </script>

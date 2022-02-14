@@ -27,11 +27,11 @@
         import Modal from './common/Modal.vue'
 
         export default {
-            data: function () {
+            data () {
                 return {newTodoItem: "", showModal: false}
             },
             methods: {
-                addTodo: function () {
+                addTodo () {
                     if (this.newTodoItem !== '') {
                         //저장하는 로직
                         this.$emit('addTodoItem', this.newTodoItem);
@@ -42,12 +42,12 @@
 
                     }
                 },
-                clearInput: function () {
+                clearInput () {
                     this.newTodoItem = '';
                 }
             },
             components: {
-                Modal: Modal
+                Modal
             }
         }
     </script>
