@@ -27,14 +27,16 @@
         import Modal from './common/Modal.vue'
 
         export default {
-            data () {
+            data() {
                 return {newTodoItem: "", showModal: false}
             },
             methods: {
-                addTodo () {
+                addTodo() {
                     if (this.newTodoItem !== '') {
-                        //저장하는 로직
-                        this.$emit('addTodoItem', this.newTodoItem);
+                        //저장하는 로직 this.$emit('addTodoItem', this.newTodoItem);
+                        this
+                            .$store
+                            .commit('addOneItem', this.newTodoItem);
                         this.clearInput(); //값을 비워주는 함수를 분할해서 만든다.
                     } else {
                         //입력하려는 내용이 비어있을 때
@@ -42,7 +44,7 @@
 
                     }
                 },
-                clearInput () {
+                clearInput() {
                     this.newTodoItem = '';
                 }
             },
