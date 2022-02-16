@@ -22,6 +22,11 @@ export const store = new Vuex.Store({
     state: {
         todoItems: storage.fetch()
     },
+    getters: {
+        storedTodoItems(state) {
+            return state.todoItems;
+        }
+    },
     mutations: {
         addOneItem(state, todoItem) {
             const obj = {
@@ -42,7 +47,7 @@ export const store = new Vuex.Store({
         },
         toggleOneItem(state, payload) {
             //localStorage에서 데이터를 갱신하는 과정
-            console.log(payload);
+            //console.log(payload);
             payload.todoItem.completed = !payload.todoItem.completed
             //console.log(todoItem.item);
             localStorage.removeItem(payload.todoItem.item);
